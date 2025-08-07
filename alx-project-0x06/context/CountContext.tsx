@@ -1,17 +1,18 @@
-import { createContext, useContext,  useState, ReactNode } from "react"
+import { createContext, useContext, useState, ReactNode } from "react"
 
 interface CountContextProps {
-  count: number
-  increment: () => void; decrement: () => void;
+  increment: () => void;
+  decrement: () => void;
+  count: number;
 }
 
 export const CountContext = createContext<CountContextProps | undefined>(undefined)
 
-export const CountProvider = ({ children }: { children: ReactNode}) => {
+export const CountProvider = ({ children }: { children: ReactNode }) => {
 
   const [count, setCount] = useState<number>(0)
 
-  const increment = () => setCount((count ) =>count + 1)
+  const increment = () => setCount((count) => count + 1)
   const decrement = () => setCount((count) => count > 0 ? count - 1 : 0)
 
   return (
